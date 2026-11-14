@@ -40,6 +40,10 @@ The final presentation layer features an executive-focused dashboard designed un
   - Executive Cards: Horizontal arrangement of key health metrics (Revenue, Cost, Profit, Margin).
   - Trend Analysis: A detailed Line Chart displaying monthly revenue shifts under chronological filters.
   - Categorical Performance: High-readability Horizontal Bar charts highlighting top-performing bike lines and product segments.
+💡 Technical Notes & Constraints
+- Data Horizon Constraints:The source SAP flat-file dataset natively contains transaction records spanning only a single fiscal year. 
+- Time Intelligence Functionality:** While advanced Time Intelligence metrics (such as Previous Year `PY` and Year-Over-Year Growth `YOY %`) are fully engineered and dynamically coded inside the **Semantic Model using DAX Calculation Groups**, their visualization in the Power BI layer is naturally limited due to the absence of historical baseline years (e.g., prior fiscal years) in the raw source data. Current Year and `YTD` functionalities operate dynamically with absolute accuracy.
+
 🚀 Repository Contents & Blueprint
 • /Pipelines: Contains layout details/JSON definition files for the data factory pipelines.
 • /Notebooks: Raw .ipynb files containing the PySpark cleansing and modeling code blocks.
