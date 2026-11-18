@@ -1,0 +1,106 @@
+table fact_sales
+	lineageTag: a02867c1-6716-44f7-af7d-8440deb7a2c8
+	sourceLineageTag: [dbo].[fact_sales]
+
+	column Sales_Order_ID
+		dataType: string
+		lineageTag: 484ed3bb-7a09-4f05-8922-1ce39fc480d0
+		sourceLineageTag: Sales_Order_ID
+		summarizeBy: none
+		sourceColumn: Sales_Order_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_Item_Line
+		dataType: string
+		lineageTag: 0949fce9-8fa8-4da9-a8e4-3f04dad528db
+		sourceLineageTag: Order_Item_Line
+		summarizeBy: none
+		sourceColumn: Order_Item_Line
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order_Date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: d12374a6-38ba-48a6-9bd8-f1852f20316f
+		sourceLineageTag: Order_Date
+		summarizeBy: none
+		sourceColumn: Order_Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_ID
+		dataType: string
+		isHidden
+		lineageTag: a809754e-cee0-4cd8-b9e8-d6f35955117b
+		sourceLineageTag: Customer_ID
+		summarizeBy: none
+		sourceColumn: Customer_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_ID
+		dataType: string
+		isHidden
+		lineageTag: 85f1239c-6e45-4ad5-950a-e1ac22a13670
+		sourceLineageTag: Product_ID
+		summarizeBy: none
+		sourceColumn: Product_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quantity
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2cb17d98-1d65-49a3-999a-684fb23fb18d
+		sourceLineageTag: Quantity
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Net_Amount
+		dataType: double
+		isHidden
+		lineageTag: 26ce427c-f2fc-459e-bb78-e601e66d6af5
+		sourceLineageTag: Net_Amount
+		summarizeBy: sum
+		sourceColumn: Net_Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Gross_Amount
+		dataType: double
+		isHidden
+		lineageTag: b572e407-028c-41e4-bae4-6a9e18d7f7b9
+		sourceLineageTag: Gross_Amount
+		summarizeBy: sum
+		sourceColumn: Gross_Amount
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_sales = entity
+		mode: directLake
+		source
+			entityName: fact_sales
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_sap_gold'
+

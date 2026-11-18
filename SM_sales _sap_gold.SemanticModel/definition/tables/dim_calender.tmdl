@@ -1,0 +1,63 @@
+table dim_calender
+	lineageTag: 783a9888-898f-479e-a581-be803d571e0c
+	sourceLineageTag: [dbo].[dim_calender]
+	dataCategory: Time
+
+	column Date_Key
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: d6bd7df9-d741-41fe-a2d8-7f66afeea7db
+		sourceLineageTag: Date_Key
+		summarizeBy: none
+		sourceColumn: Date_Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 4161d9f6-b640-42dc-b60c-f526a9638766
+		sourceLineageTag: Year
+		summarizeBy: none
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: db7bc118-0824-471f-9971-f490f17e5ef2
+		sourceLineageTag: Quarter
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 92726119-d978-4d34-a6ca-8be571ceb33f
+		sourceLineageTag: Month
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: 3dacf601-5cbd-45f0-88f0-bf6e02bec2d8
+		sourceLineageTag: Day
+		summarizeBy: none
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_calender = entity
+		mode: directLake
+		source
+			entityName: dim_calender
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_sap_gold'
+

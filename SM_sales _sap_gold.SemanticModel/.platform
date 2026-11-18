@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "SM_sales _sap_gold"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "26023cc9-bf0a-bf24-4996-de2fe13dd0b7"
+  }
+}

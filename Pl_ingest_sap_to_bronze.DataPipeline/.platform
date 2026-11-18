@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Pl_ingest_sap_to_bronze"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b5b01213-c134-815c-4e09-d88886de3ed0"
+  }
+}

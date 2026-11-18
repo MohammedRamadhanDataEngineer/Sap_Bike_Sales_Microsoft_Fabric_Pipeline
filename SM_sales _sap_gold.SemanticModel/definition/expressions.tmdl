@@ -1,0 +1,11 @@
+expression 'DirectLake - LH_sap_gold' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/b1b1907f-4e26-4fd6-8452-4b0fdda51d95/436cc12f-d32d-4272-83b3-897d9efed531", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: 242590fb-9463-41f4-a444-2ee8941bced0
+
+	annotation PBI_IncludeFutureArtifacts = False
+
+	annotation PBI_RemovedChildren = [{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[stg_sap_sales_header]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[stg_sap_customers]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[stg_sap_sales_items]"}},"objectType":"Table"},{"remoteItemId":{"analysisServicesObject":{"sourceName":null,"sourceLineageTag":"[dbo].[stg_sap_products]"}},"objectType":"Table"}]
+

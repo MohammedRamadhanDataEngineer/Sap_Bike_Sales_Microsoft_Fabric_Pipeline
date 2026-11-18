@@ -1,0 +1,41 @@
+table dim_customers
+	lineageTag: 64e25ed9-eba2-4a29-8ff2-0beb75c1f8ab
+	sourceLineageTag: [dbo].[dim_customers]
+
+	column Customer_ID
+		dataType: string
+		isHidden
+		lineageTag: d547469a-3338-4acb-94fa-b81811a412e1
+		sourceLineageTag: Customer_ID
+		summarizeBy: none
+		sourceColumn: Customer_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Customer_Name
+		dataType: string
+		lineageTag: 3236e6dd-326f-4b33-838c-18c197b0eace
+		sourceLineageTag: Customer_Name
+		summarizeBy: none
+		sourceColumn: Customer_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: 4f290d98-72c0-44e1-9bf1-fdbab79b0d07
+		sourceLineageTag: Country
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_customers = entity
+		mode: directLake
+		source
+			entityName: dim_customers
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_sap_gold'
+

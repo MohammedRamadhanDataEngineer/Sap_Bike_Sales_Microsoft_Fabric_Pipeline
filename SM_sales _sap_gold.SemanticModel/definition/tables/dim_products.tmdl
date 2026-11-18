@@ -1,0 +1,43 @@
+table dim_products
+	lineageTag: ac06c8e8-e989-4f1e-9877-c2ce6c4d710c
+	sourceLineageTag: [dbo].[dim_products]
+
+	column Product_ID
+		dataType: string
+		isHidden
+		lineageTag: c2329c5f-5873-4b59-b803-ca6bbf011094
+		sourceLineageTag: Product_ID
+		summarizeBy: none
+		sourceColumn: Product_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_Category
+		dataType: string
+		lineageTag: 304fbaef-b968-4e57-836a-78342b765e75
+		sourceLineageTag: Product_Category
+		summarizeBy: none
+		sourceColumn: Product_Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Base_Price
+		dataType: double
+		lineageTag: 9c7ef49c-8e93-4a0b-8e5c-62f35192e56b
+		sourceLineageTag: Base_Price
+		summarizeBy: none
+		sourceColumn: Base_Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition dim_products = entity
+		mode: directLake
+		source
+			entityName: dim_products
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_sap_gold'
+

@@ -1,0 +1,46 @@
+/// Applies dynamic time intelligence calculations (Current, Prior Year, and YoY % growth) to any selected measure. Drag the 'Time Calculation' column into report visuals or slicers to compare performance across time periods.
+/// 
+table 'Time Intelligence'
+	lineageTag: 9b2e97b9-dce2-43ca-bc61-81ba4d0d8b37
+
+	calculationGroup
+
+		calculationItem Current = SELECTEDMEASURE()
+
+		calculationItem YTD = TOTALYTD( SELECTEDMEASURE(),'dim_calender'[Date_Key])
+
+		calculationItem PY = CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calender'[Date_Key]))
+
+		calculationItem 'YOY %' = ```
+				VAR CurrentVal = SELECTEDMEASURE()
+				VAR PrevVal = CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calender'[Date_Key]))
+				RETURN
+				DIVIDE(CurrentVal - PrevVal, PrevVal, 0)
+				
+				```
+
+			formatStringDefinition = "0.0%"
+
+	/// Select or drag this column into visuals and slicers to switch metrics between Current period, Prior Year (PY), and Year-over-Year growth (YoY %).
+	/// 
+	column 'Time Calculation'
+		dataType: string
+		lineageTag: 08d61fa6-820e-45e3-a918-aa0951cb0bef
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aaff239-06a2-408c-baee-3d7f83688a98
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Time Intelligence' = calculationGroup
+		mode: import
+

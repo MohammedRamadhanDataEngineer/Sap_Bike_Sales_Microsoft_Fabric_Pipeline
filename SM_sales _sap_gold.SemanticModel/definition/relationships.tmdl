@@ -1,0 +1,12 @@
+relationship 5464ef9a-f246-0914-c001-56970600297c
+	fromColumn: fact_sales.Product_ID
+	toColumn: dim_products.Product_ID
+
+relationship 94bd04f1-43ef-7065-3282-27800bbd60b8
+	fromColumn: fact_sales.Customer_ID
+	toColumn: dim_customers.Customer_ID
+
+relationship ca3bce8e-8863-1215-4e2c-6c3e317bd7cd
+	fromColumn: fact_sales.Order_Date
+	toColumn: dim_calender.Date_Key
+

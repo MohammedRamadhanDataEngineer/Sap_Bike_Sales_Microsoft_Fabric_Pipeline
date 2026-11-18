@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Sap Bike Sales Performance Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d7463434-b03c-8e59-44ce-fc318df7c475"
+  }
+}

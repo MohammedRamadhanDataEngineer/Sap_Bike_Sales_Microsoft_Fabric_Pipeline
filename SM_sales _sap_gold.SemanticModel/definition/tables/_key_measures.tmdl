@@ -1,0 +1,156 @@
+table _key_measures
+	lineageTag: 768795f1-c5bc-4dab-86e6-219fe1c3c0dd
+	sourceLineageTag: [dbo].[_key_measures]
+
+	/// Aggregates full transactional metrics inclusive of national tax bounds.
+	measure 'Total Gross Revenue' = ```
+			SUM(fact_sales[Gross_Amount])
+			
+			```
+		displayFolder: 01. Revenue
+		lineageTag: 7994a2f6-99e3-4420-9b04-da4b4fc4162a
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
+
+		changedProperty = FormatString
+
+		changedProperty = Description
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	/// Calculates the actual captured transactional value minus direct upfront operational line items discount variances.
+	measure 'Total Net Revenue' = SUM(fact_sales[Net_Amount])
+		formatString: #,0.00
+		displayFolder: 01. Revenue
+		lineageTag: 97641cb4-4ea9-4553-9b4c-d9d53ef547c9
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Name
+
+		changedProperty = Description
+
+		changedProperty = FormatString
+
+	/// Tracks volume flow metrics directly out of localized material distribution warehouses.
+	measure 'Total Quantity Sold' = SUM(fact_sales[Quantity])
+		formatString: 0
+		displayFolder: 01. Revenue
+		lineageTag: 62df5df1-b625-4062-9e69-3bfa806732ed
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Name
+
+		changedProperty = Description
+
+	/// Measures corporate consumer cart generation efficiencies.
+	measure 'Average Order Value' = ```
+			
+			DIVIDE(
+			    [Total Net Revenue], 
+			    DISTINCTCOUNT(fact_sales[Sales_Order_ID]), 
+			    0
+			)
+			
+			```
+		formatString: 0.00
+		displayFolder: 01. Revenue
+		lineageTag: 589b8c21-cd7e-432d-b40e-4ae1b05ed900
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Name
+
+		changedProperty = Description
+
+		changedProperty = FormatString
+
+	/// Measures the margin leak between master data baseline prices and real execution net sale price tags.
+	measure 'Discount Variance %' = ```
+			
+			VAR TotalBaseValue = SUMX(fact_sales, fact_sales[Quantity] * RELATED(dim_products[Base_Price]))
+			RETURN
+			DIVIDE(
+			    TotalBaseValue - [Total Net Revenue],
+			    TotalBaseValue,
+			    0
+			)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 01. Revenue
+		lineageTag: ea7eb36f-9236-4a8b-b4ba-e6217ca7e0b8
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Name
+
+		changedProperty = Description
+
+		changedProperty = FormatString
+
+	/// Estimates the Cost of Goods Sold (COGS) at a fixed rate of 65% of Net Revenue. Applied as a financial proxy due to the absence of granular unit cost data in the source tables.
+	measure 'Total Cost' = [Total Net Revenue]* 0.65
+		formatString: #,0.00
+		displayFolder: 02. Profitability
+		lineageTag: 196ef82d-9a3c-4ebc-a54b-49a45a626ac8
+
+		changedProperty = Name
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Description
+
+		changedProperty = FormatString
+
+	/// Measures the net profit by deducting the total cost (65%) from total net revenue.
+	measure 'Net Profit' = [Total Net Revenue]-[Total Cost]
+		formatString: #,0.00
+		displayFolder: 02. Profitability
+		lineageTag: 9de0b79d-8529-487e-959d-0e843fa31424
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Name
+
+		changedProperty = Description
+
+		changedProperty = FormatString
+
+	/// Calculates the net profit margin percentage relative to net revenue.
+	measure 'Net Profit Margin %' = DIVIDE( [Net Profit],[Total Net Revenue],0)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: 02. Profitability
+		lineageTag: 825002ab-5bda-499f-8fac-f260f00f67cb
+
+		changedProperty = DisplayFolder
+
+		changedProperty = Name
+
+		changedProperty = Description
+
+		changedProperty = FormatString
+
+	column DummyCol
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3b301bb7-4fd5-40ed-93d1-847cf327b2bd
+		sourceLineageTag: DummyCol
+		summarizeBy: sum
+		sourceColumn: DummyCol
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _key_measures = entity
+		mode: directLake
+		source
+			entityName: _key_measures
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_sap_gold'
+
