@@ -9,11 +9,11 @@ Data Flow Workflow:
 
 1. Bronze Layer (Ingestion & Land)
 • Source Data: Ingested 6 core source CSV datasets: Sales (2 files), Products, Customers, Addresses, and Product Names.
-• Orchestration: Built a Fabric Data Factory Pipeline featuring 6 parallel Copy Activities to land the raw files securely into the LH_aw_bronze Lakehouse as a single source of truth.
+• Orchestration: Built a Fabric Data Factory Pipeline featuring 6 parallel Copy Activities to land the raw files securely into the LH_sap_bronze Lakehouse as a single source of truth.
 • Shortcuts: Created seamless shortcuts linking the Bronze layer files to the Silver environment for zero-copy data virtualization.
 
 2. Silver Layer (Data Transformation & Cleansing)
-Developed optimized PySpark Notebooks within the LH_aw_silver Lakehouse to clean, deduplicate, and merge relational structures:
+Developed optimized PySpark Notebooks within the LH_sap_silver Lakehouse to clean, deduplicate, and merge relational structures:
 • Customer Dimension Merging: Combined the raw Customers and Addresses datasets into a single, unified profile.
 • Product Dimension Enrichment: Consolidated Products and Product Names tables to resolve multilingual or descriptive attributes.
 • Quality Assurance: Handled missing values, standardized data types (dates/amounts), and strictly removed duplicate records to enforce enterprise data quality.
@@ -22,15 +22,15 @@ Developed optimized PySpark Notebooks within the LH_aw_silver Lakehouse to clean
 Leveraged a dedicated processing notebook to curate data from Silver into a high-performance Star Schema inside the LH_aw_gold Lakehouse:
 • Fact Table: Engineered FactSales containing key commercial metrics (SalesAmount, OrderQuantity).
 • Dimension Tables: Established enriched dimension lookup structures: DimProduct, DimCustomer.
-• Time Intelligence: Generated a dynamic, custom DimDate table to support advanced chronological calculations.
+• Time Intelligence: Generated a dynamic, custom dim_calender table to support advanced chronological calculations.
 • Shortcuts: Implemented Fabric Lakehouse shortcuts to map curated Gold tables directly into the analytical endpoint.
 🧠 Semantic Modeling & Advanced DAX
 Developed a high-performance Semantic Model coupled with business logic tailored for executive-level reporting:
 • Key Performance Indicators (KPIs): Engineered measures for Total Net Revenue, Total Cost (modeled at a simulated 65% benchmark), Net Profit, and Net Profit Margin % inside structured display folders (_Key Measures).
 • Calculation Groups (Time Intelligence): Formulated a specialized Time Calculation calculation group via the Model Explorer to dynamically toggle metrics across multiple time frames:
   - Current ➔ SELECTEDMEASURE()
-  - YTD ➔ TOTALYTD(SELECTEDMEASURE(), 'DimDate'[Date])
-  - PY ➔ CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('DimDate'[Date]))
+  - YTD ➔ TOTALYTD(SELECTEDMEASURE(), 'dim_calender'[DateKay])
+  - PY ➔ CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calender'[DateKay]))
   - YOY % ➔ Dynamic year-over-year growth percentage using custom Dynamic Format Strings ("0.0%").
 📊 Business Intelligence Dashboard Design
 The final presentation layer features an executive-focused dashboard designed under strict UI/UX industry standards:
