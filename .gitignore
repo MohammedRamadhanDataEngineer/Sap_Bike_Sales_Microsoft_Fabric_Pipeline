@@ -1,0 +1,44 @@
+# =========================================================================
+# Microsoft Fabric & Power BI Project (PBIP) Git Ignore Configuration
+# =========================================================================
+
+# Ignore large local data files and Power BI backups
+*.pbix
+*.pbit
+*.x儲
+*.backup
+
+# Ignore local big data storage and Spark execution cache
+**/cache/
+**/localWarehouse/
+**/.sparkStaging/
+**/spark-events/
+
+# Ignore local user settings files in Power BI (contains screen layout and local credentials)
+.powerbi/
+**/UserSettings.xml
+**/Layout.json_user
+
+# Ignore system files and workspace development temporary files (VS Code / Python)
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+
+# Ignore local raw data files (extracted from SAP for testing)
+*.csv
+*.xlsx
+*.parquet
+*.json
+# EXCEPT pipelines folder JSON files - we want to track these!
+!pipelines/*.json
+
+# Ignore local Python virtual environments if created
+env/
+venv/
+.env
