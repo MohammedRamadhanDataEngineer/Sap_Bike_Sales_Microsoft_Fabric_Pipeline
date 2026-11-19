@@ -17,7 +17,7 @@ This repository showcases an enterprise-grade Analytics Engineering project impl
 
 ### 1. Bronze Layer (Ingestion & Land)
 * **Source Data:** Ingested 6 core source CSV datasets: Sales (2 files), Products, Customers, Addresses, and Product Names.
-* **Orchestration:** Built a Fabric Data Factory Pipeline featuring 6 parallel Copy Activities to land the raw files securely into the `LH_sap_bronze` Lakehouse as a single source of truth.
+* **Orchestration:** Built a Fabric Data Factory Pipeline featuring 6 parallel Copy Activities to land the raw files securely into the `LH_sap_bronze1` Lakehouse as a single source of truth.
 * **Shortcuts:** Created seamless shortcuts linking the Bronze layer files to the Silver environment for zero-copy data virtualization.
 
 ### 2. Silver Layer (Data Transformation & Cleansing)
@@ -27,8 +27,8 @@ Developed optimized PySpark Notebooks within the `LH_sap_silver` Lakehouse to cl
 * **Quality Assurance:** Handled missing values, standardized data types (dates/amounts), and strictly removed duplicate records to enforce enterprise data quality.
 
 ### 3. Gold Layer (Business Ready - Dimensional Modeling)
-Leveraged a dedicated processing notebook to curate data from Silver into a high-performance Star Schema inside the `LH_aw_gold` Lakehouse:
-* **Fact Table:** Engineered `Fact_Sales` containing key commercial metrics (SalesAmount, OrderQuantity).
+Leveraged a dedicated processing notebook to curate data from Silver into a high-performance Star Schema inside the `LH_sap_gold` Lakehouse:
+* **Fact Table:** Engineered `Fact_Sales` containing key commercial metrics (Gross_Amount, Quantity).
 * **Dimension Tables:** Established enriched dimension lookup structures: `dim_Product`, `dim_Customer`.
 * **Time Intelligence:** Generated a dynamic, custom `dim_calender` table to support advanced chronological calculations.
 * **Shortcuts:** Implemented Fabric Lakehouse shortcuts to map curated Gold tables directly into the analytical endpoint.
@@ -40,8 +40,8 @@ Developed a high-performance Semantic Model coupled with business logic tailored
 * **Key Performance Indicators (KPIs):** Engineered measures for Total Net Revenue, Total Cost (modeled at a simulated 65% benchmark), Net Profit, and Net Profit Margin % inside structured display folders (`_Key Measures`).
 * **Calculation Groups (Time Intelligence):** Formulated a specialized Time Calculation calculation group via the Model Explorer to dynamically toggle metrics across multiple time frames:
   * **Current** ➔ `SELECTEDMEASURE()`
-  * **YTD** ➔ `TOTALYTD(SELECTEDMEASURE(), 'dim_calender'[DateKay])`
-  * **PY** ➔ `CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calender'[DateKay]))`
+  * **YTD** ➔ `TOTALYTD(SELECTEDMEASURE(), 'dim_calender'[Date_Kay])`
+  * **PY** ➔ `CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calender'[Date_Kay]))`
   * **YOY %** ➔ Dynamic year-over-year growth percentage using custom Dynamic Format Strings (`"0.0%"`).
 
 ---
@@ -54,7 +54,7 @@ The final presentation layer features an executive-focused dashboard designed un
 * **Layout Strategy:** Uses a clean, structured grid following the standard reading Z-pattern (1920x1080 Full HD Canvas).
 * **Color Palette:** Professional corporate palette using Deep Royal Blue (`#1E3A8A`) for headers and structural layout, alongside neutral Gray (`#F3F4F6`) container backgrounds to avoid cognitive overload.
 * **Visual Breakdown:**
-  * **Executive Cards:** Horizontal arrangement of key health metrics (Revenue, Average Order, Profit, Margin).
+  * **Executive Cards:** Horizontal arrangement of key health metrics (Revenue, Average Order Value, Profit, Margin).
   * **Trend Analysis:** A detailed Line Chart displaying monthly revenue shifts under chronological filters.
   * **Categorical Performance:** High-readability Horizontal Bar charts highlighting top-performing bike lines and product segments.
 
