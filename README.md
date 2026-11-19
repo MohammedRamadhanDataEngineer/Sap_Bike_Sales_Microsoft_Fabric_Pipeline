@@ -37,13 +37,17 @@ The final presentation layer features an executive-focused dashboard designed un
 • Layout Strategy: Uses a clean, structured grid following the standard reading Z-pattern (1920x1080 Full HD Canvas).
 • Color Palette: Professional corporate palette using Deep Royal Blue (#1E3A8A) for headers and structural layout, alongside neutral Gray (#F3F4F6) container backgrounds to avoid cognitive overload.
 • Visual Breakdown:
-  - Executive Cards: Horizontal arrangement of key health metrics (Revenue, Cost, Profit, Margin).
+  - Executive Cards: Horizontal arrangement of key health metrics (Revenue, Average Order , Profit, Margin).
   - Trend Analysis: A detailed Line Chart displaying monthly revenue shifts under chronological filters.
   - Categorical Performance: High-readability Horizontal Bar charts highlighting top-performing bike lines and product segments.
 💡 Technical Notes & Constraints
 - Data Horizon Constraints:The source SAP flat-file dataset natively contains transaction records spanning only a single fiscal year. 
 - Time Intelligence Functionality:** While advanced Time Intelligence metrics (such as Previous Year `PY` and Year-Over-Year Growth `YOY %`) are fully engineered and dynamically coded inside the **Semantic Model using DAX Calculation Groups**, their visualization in the Power BI layer is naturally limited due to the absence of historical baseline years (e.g., prior fiscal years) in the raw source data. Current Year and `YTD` functionalities operate dynamically with absolute accuracy.
-
+## 🛠️ Tech Stack & Skills Demonstrated
+* **Platform:** Microsoft Fabric (OneLake, Lakehouse, Synapse Data Engineering)
+* **Languages:** PySpark (Python), DAX
+* **Data Ops:** Fabric Git Integration, GitHub Version Control
+* **Visualization:** Power BI (DirectLake Mode)
 🚀 Repository Contents & Blueprint
 • /Pipelines: Contains layout details/JSON definition files for the data factory pipelines.
 • /Notebooks: Raw .ipynb files containing the PySpark cleansing and modeling code blocks.
