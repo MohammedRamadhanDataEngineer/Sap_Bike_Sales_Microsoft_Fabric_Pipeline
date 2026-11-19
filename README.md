@@ -11,6 +11,9 @@ This repository showcases an enterprise-grade Analytics Engineering project impl
 ---
 
 ## 📐 Data Pipeline & Medallion Architecture
+<p align="center">
+  <img src="images/Architecture Diagram.png" alt="Fabric Architecture" width="90%">
+</p>
 
 ### Data Flow Workflow
 `[6 Raw CSV Files] ➔ 🥉 Bronze (Raw Parquet) ➔ 🥈 Silver (Cleansed Delta) ➔ 🥇 Gold (Star Schema) ➔ 📊 Power BI`
