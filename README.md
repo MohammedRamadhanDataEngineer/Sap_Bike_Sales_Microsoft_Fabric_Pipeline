@@ -43,8 +43,8 @@ Developed a high-performance Semantic Model coupled with business logic tailored
 * **Key Performance Indicators (KPIs):** Engineered measures for Total Net Revenue, Total Cost (modeled at a simulated 65% benchmark), Net Profit, and Net Profit Margin % inside structured display folders (`_Key Measures`).
 * **Calculation Groups (Time Intelligence):** Formulated a specialized Time Calculation calculation group via the Model Explorer to dynamically toggle metrics across multiple time frames:
   * **Current** ➔ `SELECTEDMEASURE()`
-  * **YTD** ➔ `TOTALYTD(SELECTEDMEASURE(), 'dim_calender'[Date_Kay])`
-  * **PY** ➔ `CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calender'[Date_Kay]))`
+  * **YTD** ➔ `TOTALYTD(SELECTEDMEASURE(), 'dim_calendar'[DateKay])`
+  * **PY** ➔ `CALCULATE(SELECTEDMEASURE(), SAMEPERIODLASTYEAR('dim_calendar'[DateKay]))`
   * **YOY %** ➔ Dynamic year-over-year growth percentage using custom Dynamic Format Strings (`"0.0%"`).
 
 ---
