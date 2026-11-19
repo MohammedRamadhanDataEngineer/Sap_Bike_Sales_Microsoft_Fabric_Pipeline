@@ -99,9 +99,10 @@ Since this project utilizes **Fabric Git Integration**, you can easily synchroni
    * Navigate to the `/Pipelines` folder to trigger data ingestion into the Bronze layer, or open the `/Notebooks` sequentially to execute the PySpark processing workflows.
 
 ---
+## Repository Contents & Blueprint
+* 📂 `Pl_ingest_sap_to_bronze.DataPipeline/` - Contains layout details for the data factory pipelines.
+* 📂 `NB_bronze_to_silver.Notebook/` - Raw PySpark notebook code for initial data cleansing.
+* 📂 `NB_Silver_To_Gold.Notebook/` - Raw PySpark notebook code for star-schema structural modeling.
+* 📂 `SM_sales _sap_gold.SemanticModel/` - Documented DAX scripts and display folder schema definitions.
+* 📂 `images/` - High-resolution imagery of the data architecture diagram and final dashboard view.
 
-## 📂 Repository Contents & Blueprint
-* 📂 `/Pipelines` - Contains layout details/JSON definition files for the data factory pipelines.
-* 📂 `/Notebooks` - Raw `.ipynb` files containing the PySpark cleansing and modeling code blocks.
-* 📂 `/Semantic_Model` - Documented DAX scripts and display folder schema definitions.
-* 📂 `/Screenshots` - High-resolution imagery of the data architecture diagram and final dashboard view.
