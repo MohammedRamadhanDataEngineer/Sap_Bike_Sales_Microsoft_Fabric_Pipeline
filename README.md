@@ -48,6 +48,7 @@ The final presentation layer features an executive-focused dashboard designed un
 * **Languages:** PySpark (Python), DAX
 * **Data Ops:** Fabric Git Integration, GitHub Version Control
 * **Visualization:** Power BI (DirectLake Mode)
+  
 🚀 Repository Contents & Blueprint
 • /Pipelines: Contains layout details/JSON definition files for the data factory pipelines.
 • /Notebooks: Raw .ipynb files containing the PySpark cleansing and modeling code blocks.
