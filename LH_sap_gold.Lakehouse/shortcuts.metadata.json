@@ -1,0 +1,54 @@
+[
+  {
+    "name": "stg_sap_sales_items",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/stg_sap_sales_items",
+        "itemId": "03f1f5c1-f4ab-9805-49cf-3180fb83fb78",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  },
+  {
+    "name": "stg_sap_sales_header",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/stg_sap_sales_header",
+        "itemId": "03f1f5c1-f4ab-9805-49cf-3180fb83fb78",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  },
+  {
+    "name": "stg_sap_products",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/stg_sap_products",
+        "itemId": "03f1f5c1-f4ab-9805-49cf-3180fb83fb78",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  },
+  {
+    "name": "stg_sap_customers",
+    "path": "/Tables/dbo",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/stg_sap_customers",
+        "itemId": "03f1f5c1-f4ab-9805-49cf-3180fb83fb78",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  }
+]

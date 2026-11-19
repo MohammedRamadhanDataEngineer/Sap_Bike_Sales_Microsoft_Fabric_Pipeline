@@ -1,0 +1,15 @@
+[
+  {
+    "name": "rawdata",
+    "path": "/Files",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/rawdata",
+        "itemId": "21481294-38e9-9ffa-499b-9bcdb9eea704",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "artifactType": "Lakehouse"
+      }
+    }
+  }
+]
