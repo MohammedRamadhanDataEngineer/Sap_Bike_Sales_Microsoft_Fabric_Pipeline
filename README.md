@@ -49,7 +49,7 @@ Developed a high-performance Semantic Model coupled with business logic tailored
 ## 📊 Business Intelligence Dashboard Design
 The final presentation layer features an executive-focused dashboard designed under strict UI/UX industry standards:
 <p align="center">
-  <img src="images/Sap Bike Sales Performance Dashboard - Report .png" alt="Executive Dashboard" width="90%">
+  <img src="images/Sap Bike Sales Performance Dashboard - Report -Fabric .png" alt="Executive Dashboard" width="90%">
 </p>
 * **Layout Strategy:** Uses a clean, structured grid following the standard reading Z-pattern (1920x1080 Full HD Canvas).
 * **Color Palette:** Professional corporate palette using Deep Royal Blue (`#1E3A8A`) for headers and structural layout, alongside neutral Gray (`#F3F4F6`) container backgrounds to avoid cognitive overload.
